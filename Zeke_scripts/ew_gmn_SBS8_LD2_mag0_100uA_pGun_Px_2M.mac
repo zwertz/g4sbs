@@ -1,0 +1,58 @@
+## Configure G4SBS for gmn (Q^2 = 4.5 GeV^2)
+##/g4sbs/filename        /lustre19/expphy/volatile/halla/sbs/ewertz/Simulation/HCal_Eff/ew_gmn_SBS8_LD2_mag0_100uA_pGun_Px_2M.root    ## Output rootfile
+
+## Configure Experiment
+/g4sbs/exp             gmn
+
+## Configure the target
+/g4sbs/target          LD2
+/g4sbs/targlen         15.0 cm  ## Target Length
+
+## Configure generator settings
+/g4sbs/kine            gun           ## Generator
+/g4sbs/particle	       proton
+/g4sbs/gunpol	       1 0 0
+/g4sbs/runtime         1.0 s
+/g4sbs/beamcur         1.0 muA
+/g4sbs/beamE           5.965 GeV
+/g4sbs/thmin           28.0 deg
+/g4sbs/thmax           31.0 deg
+/g4sbs/phmin           166 deg
+/g4sbs/phmax           188 deg
+/g4sbs/eemin	       1 GeV
+/g4sbs/eemax	       9 GeV
+
+## Configure standard detector settings
+/g4sbs/hcaldist        11.0 m
+/g4sbs/hcalvoffset     0.75 m
+/g4sbs/beamlineconfig  4                 ## set relevant beamline configuration
+/g4sbs/sbsclampopt     3                 ## Front field clamp only
+
+## Configure the magnets
+/g4sbs/bbfield         1      ##Boolean BB On/Off
+/g4sbs/scalebbfield    0.9672 
+
+
+##SBS field scale: 100% = 1.23 tesla, 70% = 0.861, 50% = 0.615, 30% = 0.369
+##Trying to get a true 50% field. 0.615 is a bit weak so using extrapolation:
+## 30% -> dx = -0.483864, 50%-> dx = -0.8, Wanting dx to be -1.05
+## for -1.05 -> mag% = 65.816 -> 0.80954 T
+## Needs a bump for a better 50%-> 68% --> 0.8364T
+## Lets try 70% for 50%!! .78*1.23 = 0.9585
+##75*1.25 = 0.9225
+##/g4sbs/tosfield        SBSPortableFieldMap_FrontClampOnly_NoPoleShims.table 2
+/g4sbs/sbsmagfield     0.0 tesla
+/g4sbs/48d48field      0       ##Boolean On/Off
+/g4sbs/bbang           26.5 deg
+/g4sbs/bbdist          1.97473 m
+#This is actually hcal angle
+/g4sbs/sbsang          29.4 deg
+/g4sbs/48D48dist       2.25 m 
+
+
+/g4sbs/keepsdtrackinfo 	all true
+/g4sbs/totalabs true
+
+##Run events. But not really cause jlab-HPC will do it
+/g4sbs/eventstatusevery 10000
+##/g4sbs/run              2100000

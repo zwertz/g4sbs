@@ -1,0 +1,47 @@
+## Configure G4SBS for gmn sbs 8 (Q^2 = 4.5 GeV^2) LD2
+#/g4sbs/filename       sbs8_sbs100p_g4sbs_deeN_job_0.root   ## Output rootfile, commented for batch farm jobs
+
+## Configure Experiment
+/g4sbs/exp             gmn
+
+## Configure the target
+/g4sbs/target          LD2
+/g4sbs/targlen         15.0 cm # Target Length
+/g4sbs/rasterx 	       2.0 mm  # raster size in X
+/g4sbs/rastery	       2.0 mm  # raster size in Y
+
+## Configure generator settings
+/g4sbs/kine            elastic           ## Generator
+/g4sbs/beamcur         1.0 muA
+/g4sbs/beamE           5.9826 GeV
+/g4sbs/thmin           43.0 deg
+/g4sbs/thmax           56.0 deg
+/g4sbs/phmin           -25 deg
+/g4sbs/phmax           25 deg
+
+## Configure standard detector settings
+/g4sbs/hcaldist        11.0 m
+/g4sbs/hcalvoffset     0.75 m
+/g4sbs/beamlineconfig  3                 ## set relevant beamline configuration
+/g4sbs/sbsclampopt     3                 ## Front field clamp only
+
+## Configure the magnets
+/g4sbs/bbfield         1
+/g4sbs/scalebbfield    0.9672   
+/g4sbs/tosfield        SBSPortableFieldMap_FrontClampOnly_NoPoleShims.table 2
+/g4sbs/scalesbsfield   1.0               ## to be tuned, current value is placeholder
+/g4sbs/bbang           26.5 deg
+/g4sbs/bbdist 	       1.97473 m
+/g4sbs/sbsang          29.9 deg
+/g4sbs/hcalangoffset   -0.5 deg
+/g4sbs/48D48dist       2.25 m 
+/g4sbs/setbigbiteplate      1           ## add aluminum absorber
+/g4sbs/bigbiteplatethick    0.3175 cm   ## 1/8 inches to cm
+/g4sbs/bigbiteplatematerial Al
+
+/g4sbs/keepsdtrackinfo 	all true
+/g4sbs/totalabs true
+
+## Run events
+/g4sbs/eventstatusevery 1000
+#/g4sbs/run             1000            #Commented for batch farm jobs
