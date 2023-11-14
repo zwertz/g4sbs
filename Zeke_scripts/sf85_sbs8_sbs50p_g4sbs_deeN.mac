@@ -29,7 +29,7 @@
 /g4sbs/bbfield         1
 /g4sbs/scalebbfield    0.9672   
 /g4sbs/tosfield        SBSPortableFieldMap_FrontClampOnly_NoPoleShims.table 2
-/g4sbs/scalesbsfield   0.5               ## to be tuned, current value is placeholder
+/g4sbs/scalesbsfield   0.85               ## to be tuned, current value is placeholder
 /g4sbs/bbang           26.5 deg
 /g4sbs/bbdist 	       1.97473 m
 /g4sbs/sbsang          29.9 deg
